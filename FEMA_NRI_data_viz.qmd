@@ -1,0 +1,43 @@
+---
+title: "EDS 230 HW2"
+author: "Henry Oliver"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(here)
+```
+
+
+```{r}
+nri_raw <- read_csv(here("data/National_Risk_Index_Counties_807384124455672111.csv")) %>% 
+  clean_names()
+```
+
+The National Risk Index Counties feature layer contains county-level data for the Risk Index, Expected Annual Loss, Social Vulnerability, and Community Resilience.The National Risk Index data helps to illustrate the communities most at risk for 18 natural hazards across the United States and territories: avalanche, coastal flooding, cold wave, drought, earthquake, hail, heat wave, hurricane, ice storm, inland flooding, landslide, lightning, strong wind, tornado, tsunami, volcanic activity, wildfire, and winter weather. The National Risk Index data provides Risk Index values, scores and ratings based on data for Expected Annual Loss due to natural hazards, Social Vulnerability, and Community Resilience. Separate values, scores and ratings are also provided for Expected Annual Loss, Social Vulnerability, and Community Resilience.
+
+“How do FEMA National Risk Index scores for counties in California compare to those in other states?”
+
+Variables of interest:
+object_id, state_name, state_name_abbreviation, county_name, county_fips_code, population_2020, building_value, agricultural_value, national_risk_index_score_composite, expected_annual_loss_score_composite.
+
+The final National Risk Index (NRI) Composite Risk Score represents a nationally standardized measure of natural hazard risk that integrates multi-hazard exposure, community vulnerability, and community resilience. The score is calculated as the product of aggregated hazard risk and social vulnerability, adjusted by resilience as a mitigating factor, and reflects relative risk compared to other U.S. counties rather than absolute probability or expected loss.
+
+The Expected Annual Loss for each Census tract or county is the average economic loss in dollars
+resulting from natural hazards each year. Expected Annual Loss is computed for each hazard type
+and only quantifies loss for relevant consequence types (i.e., buildings, population, or agriculture).
+
+```{r}
+
+nri_clean <- nri_raw %>% 
+  select("objectid", "state_name", "state_name_abbreviation", "county_name", "county_fips_code", "population_2020", "building_value", "agriculture_value", "national_risk_index_score_composite", "expected_annual_loss_score_composite"
+)
+
+nri_state <- nri_clean %>% 
+  group_by(state_name_abbreviation) %>% 
+  filter(!state_name_abbreviation %in% c("GU", "VI", "PR", "AS", "MP")) %>% 
+  summarise(mean_nri = mean(national_risk_index_score_composite, na.rm = TRUE))
+```
+
