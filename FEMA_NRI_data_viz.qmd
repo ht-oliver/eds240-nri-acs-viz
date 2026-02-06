@@ -74,7 +74,8 @@ ggplot(nri_top10, aes(x = reorder(state_name_abbreviation, -proportion_top_25_pc
     subtitle = "Natural hazard exposure concentrated in western and coastal states",
     y = "Proportion of counties with\n75th percentile NRI score",
     x = NULL,
-    caption = "* Excludes Washington DC (one county) and Delaware (three counties)\nData: FEMA National Risk Index (2025 Release)"
+    caption = "* Excludes Washington DC (one county) and Delaware (three counties)\nData: FEMA National Risk Index (2025 Release)",
+    alt = "Bar chart showing top 10 US states by proportion of counties with FEMA National Risk Index scores in the top 25 percentile of the nation. New Jersey leads at 100%, closely followed by California, Connecticut and Arizona respectively at about 90%. Steep dropoff after Hawaii at ~80%. Number 10 is Oregon at just about 55%. Figure excludes Washington DC and Delaware due to their low number of counties."
   ) +
   theme_minimal() +
   theme(
