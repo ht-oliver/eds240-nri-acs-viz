@@ -10,9 +10,11 @@ This repository houses the scripts necessary to produce a visualization comparin
 "How does climate hazard risk exposure vary across racial / ethnic groups in California?"
 
 ### Visualizations
-![US States with Highest Proportion of High-Risk Counties](FEMA_NRI_data_viz_files/figure-html/unnamed-chunk-6-1.png)
+![US States with Highest Proportion of High-Risk Counties](FEMA_NRI_data_viz_files/figure-html/unnamed-chunk-4-1.png)
 
-![Population Distribution Across Climate Risk LEvels](HW3_files/figure-html/unnamed-chunk-4-1.png)
+-
+
+![Population Distribution Across Climate Risk Levels](HW3_files/figure-html/unnamed-chunk-6-1.png)
 
 ### Repository Structure
 ```
